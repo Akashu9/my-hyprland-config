@@ -54,6 +54,7 @@ hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
 hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
 hl.permission("/usr/(bin|local/bin)/hyprlock", "screencopy", "allow")
+hl.permission("/usr/(bin|local/bin)/hyprshot", "screencopy", "allow")
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -279,7 +280,7 @@ hl.bind(mainMod .. "+ X", hl.dsp.exec_cmd("hyprshot -m output -m eDP-1 -o ~/Pict
 hl.bind(mainMod .. "+ N", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. "+ O", hl.dsp.exec_cmd("pkill wvkbd-deskintl || wvkbd-deskintl"))
 hl.bind(mainMod .. "+ N", hl.dsp.exec_cmd("loginctl lock-session"))
---hl.bind(mainMod .. "+ ", hl.dsp.exec_cmd(""))
+hl.bind(mainMod .. "+ I", hl.dsp.exec_cmd("kitty nmtui"))
 --hl.bind(mainMod .. "+ ", hl.dsp.exec_cmd(""))
 
 -- actions
