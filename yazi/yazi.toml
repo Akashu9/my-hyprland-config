@@ -1,0 +1,57 @@
+# ==============================================================================
+# YAZI GENERAL CONFIGURATION TEMPLATE
+# Save this to ~/.config/yazi/yazi.toml
+# ==============================================================================
+
+[mgr]
+# Sort files naturally (1.md < 2.md < 10.md) and show folders first
+sort_by      = "natural"
+sort_sensitive = false
+sort_reverse   = false
+sort_dir_first = true
+
+# Toggle default view behaviors
+show_hidden  = false
+show_symlink = true
+
+# What info to display on the right side of the list ("none", "size", "mtime", "permissions")
+line_mode    = "size"
+
+[preview]
+# Limit preview sizes so huge files don't freeze the terminal
+max_width  = 1200
+max_height = 1200
+cache_dir  = ""
+
+# ==============================================================================
+# CUSTOM OPENERS & APPLICATIONS
+# ==============================================================================
+[opener]
+# Quick-edit files using your system's default terminal editor ($EDITOR environment variable)
+edit = [
+    { run = '${EDITOR:-nvim} "$@"', block = true, for = "unix" },
+    { run = 'notepad.exe "%1"', block = true, for = "windows" }
+]
+# Separate GUI instance opener for Xournal++
+xournalpp = [
+    { run = 'xournalpp "$@"', orphan = true, for = "unix" },
+    { run = '"C:\Program Files\Xournal++\xournalpp.exe" "%1"', orphan = true, for = "windows" }
+]
+pdf = [
+    { run = 'waterfox "$@"', orphan = true, for = "unix" }
+]
+# ==============================================================================
+# EXTENSION & EXTENSION PREPENDING RULES
+# ==============================================================================
+[open]
+# Use prepend_rules to map specific extensions to your custom openers
+prepend_rules = [
+    # Map code/text files to your text editor opener
+    { url = "*.txt", use = "edit" },
+    { url = "*.md", use = "edit" },
+    { url = "*.json", use = "edit" },
+    { url = "*.toml", use = "edit" },
+    { url = "*.pdf", use = "pdf"}, 
+    # Map Xournal++ files to your custom xournalpp opener
+    { url = "*.xopp", use = "xournalpp" }
+]
