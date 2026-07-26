@@ -31,7 +31,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("hypridle")
-	hl.exec_cmd("/usr/lib/hyprpolkitagent/hyprpolkitagent")
+	hl.exec_cmd("hyprpolkitagent|/usr/lib/hyprpolkitagent/hyprpolkitagent")
 end)
 
 -------------------------------
@@ -54,7 +54,6 @@ hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
 hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
 hl.permission("/usr/(bin|local/bin)/hyprlock", "screencopy", "allow")
-hl.permission("/usr/(bin|local/bin)/hyprshot", "screencopy", "allow")
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -275,11 +274,12 @@ hl.bind(mainMod .. "+ W", hl.dsp.exec_cmd(webBrowser))
 hl.bind(mainMod .. "+ S", hl.dsp.exec_cmd("steam"))
 hl.bind(mainMod .. "+ D", hl.dsp.exec_cmd("flatpak run com.discordapp.Discord"))
 hl.bind(mainMod .. "+ Z", hl.dsp.exec_cmd("hyprshot -m region -z --clipboard-only"))
+hl.bind(mainModShift .. "+ Z", hl.dsp.exec_cmd("hyprshot -m region -z -o ~/Pictures/Screenshots -- mpv"))
 hl.bind(mainMod .. "+ X", hl.dsp.exec_cmd("hyprshot -m output -m eDP-1 -o ~/Pictures/Screenshots"))
 hl.bind(mainMod .. "+ N", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. "+ O", hl.dsp.exec_cmd("pkill wvkbd-deskintl || wvkbd-deskintl"))
 hl.bind(mainMod .. "+ N", hl.dsp.exec_cmd("loginctl lock-session"))
-hl.bind(mainMod .. "+ I", hl.dsp.exec_cmd("kitty nmtui"))
+--hl.bind(mainMod .. "+ ", hl.dsp.exec_cmd(""))
 --hl.bind(mainMod .. "+ ", hl.dsp.exec_cmd(""))
 
 -- actions
@@ -299,7 +299,6 @@ hl.bind(mainModShift .. "+ Tab", function()
 		end, { timeout = 2000, type = "oneshot" })
 	end, { timeout = 1000, type = "oneshot" })
 end)
-
 hl.bind(mainModShift .. "+ ESCAPE", hl.dsp.exec_cmd("hyprshutdown --post-cmd 'loginctl poweroff'"))
 hl.bind(mainModAlt .. "+ ESCAPE", hl.dsp.exec_cmd("hyprshutdown --post-cmd 'loginctl reboot'"))
 
