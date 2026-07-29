@@ -18,16 +18,14 @@ tooltip {
 }
 
 #workspaces button {
-  padding: 0 5px;
-  background: transparent;
-
+  border-radius: 8px;
   border-bottom: 3px solid transparent;
 }
 
-#workspaces button.focused {
-  background: #64727d;
-  border-bottom: 3px solid white;
+#workspaces button.active {
+    background: #555555;
 }
+
 
 #mode {
   background: #64727d;
@@ -62,7 +60,7 @@ tooltip {
 #network,
 #battery.mouse,
 #battery.pen {
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px 0px 10px;
 }
 
 @keyframes rainbow-smooth {

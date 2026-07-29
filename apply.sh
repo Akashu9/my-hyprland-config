@@ -29,3 +29,4 @@ hyprctl reload
 waybar &
 hypridle &
 hyprpaper &
+exit
