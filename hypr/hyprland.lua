@@ -248,6 +248,9 @@ local mainModShift = "SUPER + SHIFT"
 local mainModAlt = "SUPER + ALT"
 local mainModCtrl = "SUPER + CTRL"
 --local mainModSpace = "SUPER + SPACE"
+
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("~/.config/hypr/reset.sh"))
+
 -- terminal
 hl.bind(mainMod .. "+ TAB", hl.dsp.exec_cmd(terminal))
 hl.bind(mainModShift .. "+ F23", hl.dsp.exec_cmd(terminal))
