@@ -18,4 +18,14 @@ done
 
 echo "${array[@]}"
 
+killall -9 waybar
+pkill hypridle
+pkill hyprpaper
+
+sleep 2
+
 hyprctl reload
+
+waybar &
+hypridle &
+hyprpaper &
