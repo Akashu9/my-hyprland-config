@@ -1,9 +1,14 @@
 {
   "layer": "bottom",
   // "position": "bottom",
-  "modules-left": ["custom/archicon", "hyprland/workspaces", "battery"],
+  "modules-left": [
+    "custom/archicon",
+    "hyprland/workspaces",
+    "battery#mouse",
+    "battery#pen"
+  ],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["pulseaudio", "network", "clock"],
+  "modules-right": ["pulseaudio", "network", "battery", "clock"],
 
   "hyprland/workspaces": {
     "format": "{name}",
@@ -41,13 +46,15 @@
     "interval": 3,
     // "interface": "eno1",
     "format": "{ifname}",
-    // "format-ethernet": "{ifname} {bandwidthTotalBytes} 󰈀 ",
-    "format-ethernet": "{ifname} 󰈀 ",
-    "format-disconnected": " ",
-    "tooltip-format": " {ifname} via {gwaddr}",
-    "tooltip-format-ethernet": " {ifname} {ipaddr}/{cidr}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ifname} ",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50
+    "max-length": 50,
+    "on-click": "kitty nmtui"
   },
 
   "clock": {
@@ -60,10 +67,28 @@
     "tooltip": false
   },
 
-  "battery": {
+  "battery#mouse": {
     "bat": "hidpp_battery_0",
     "interval": 60,
     "format": "Mouse {capacity}% {icon}",
+    "format-icons": {
+      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+    }
+  },
+  "battery#pen": {
+    "bat": "wacom_battery_0",
+    "interval": 60,
+    "format": "Pen {capacity}% {icon}",
+    "format-icons": {
+      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+    }
+  },
+  "battery": {
+    "bat": "BAT0",
+    "interval": 60,
+    "format": "{capacity}% {icon}",
     "format-icons": {
       "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
       "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]

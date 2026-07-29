@@ -5,7 +5,7 @@
     "SF Pro Display", "JetBrainsMono Nerd Font", Helvetica, Arial, sans-serif;
   font-size: 1.4rem;
   min-height: 0;
-  color: rgb(255, 255, 255);
+  color: rgb(191, 191, 191);
 }
 
 window#waybar {
@@ -13,12 +13,8 @@ window#waybar {
 }
 
 tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid rgba(100, 114, 125, 0.5);
-}
-
-#workspaces button.active {
-  opacity: 0.4;
+  background: rgba(31, 31, 31, 0.5);
+  border: 1px solid rgba(191, 191, 191, 0.5);
 }
 
 #workspaces button {
@@ -31,12 +27,6 @@ tooltip {
 #workspaces button.focused {
   background: #64727d;
   border-bottom: 3px solid white;
-}
-
-#mode,
-#clock,
-#battery {
-  padding: 0 10px;
 }
 
 #mode {
@@ -64,12 +54,14 @@ tooltip {
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+
 #clock,
-#battery,
 #network,
 #pulseaudio,
 #custom-archicon,
-#network {
+#network,
+#battery.mouse,
+#battery.pen {
   padding: 5px 10px 5px 10px;
 }
 
@@ -107,10 +99,10 @@ tooltip {
   /* animation: rainbow-smooth 30s linear infinite; */
   text-shadow: 0 0 20px currentColor;
 
-  color: aqua;
+  color: #aaaaaa;
   padding-right: 10px;
 }
 
-/* #network {
-  background-color: rgb(27, 27, 27);
-} */
+#network {
+  padding-right: 20px;
+}
