@@ -13,7 +13,7 @@ for element in "${array[@]}"; do
   mv ~/.config/$element/* ~/.config/$element/.backup/
 
   echo "copying $element into ~/.config/$element/"
-  cp ./$element/* ~/.config/$element/
+  cp ./$element/*.* ~/.config/$element/
 done
 
 echo "${array[@]}"
