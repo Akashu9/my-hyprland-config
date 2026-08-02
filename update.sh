@@ -10,7 +10,7 @@ for element in "${array[@]}"; do
 
   #delete older
   rm ~/.config/$element/.backup/*
-  mv ~/.config/$element/* ~/.config/$element/.backup/
+  mv ~/.config/$element/*.* ~/.config/$element/.backup/
 
   echo "copying $element into ~/.config/$element/"
   cp ./$element/*.* ~/.config/$element/

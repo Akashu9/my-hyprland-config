@@ -1,28 +1,8 @@
 -----------------
 --- MONITORS ----
 --- -------------
-hl.monitor({
-	output = "DP-1",
-	mode = "3440x1440@120",
-	position = "0x0",
-	scale = "1",
-	vrr = 1,
-})
-
-hl.monitor({
-	output = "eDP-1",
-	mode = "1920x1200@60",
-	position = "0x0",
-	scale = "1",
-})
-
-hl.monitor({
-	output = "",
-	mode = "preferred",
-	position = "auto",
-	scale = "auto",
-	mirror = "eDP-1",
-})
+hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
+pcall(require, "personal.monitors")
 
 -------------------
 ---- AUTOSTART ----
@@ -34,6 +14,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("/usr/lib/hyprpolkitagent/hyprpolkitagent")
 end)
+pcall(require, "personal.autostart")
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -44,6 +25,7 @@ hl.env("MOZ_ENABLE_WAYLAND", "1")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
+pcall(require, "personal.enviroments")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -135,24 +117,6 @@ hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "al
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
--- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
--- "Smart gaps" / "No gaps when only"
--- uncomment all if you wish to use that.
--- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
--- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
--- hl.window_rule({
---     name  = "no-gaps-wtv1",
---     match = { float = false, workspace = "w[tv1]" },
---     border_size = 0,
---     rounding    = 0,
--- })
--- hl.window_rule({
---     name  = "no-gaps-f1",
---     match = { float = false, workspace = "f[1]" },
---     border_size = 0,
---     rounding    = 0,
--- })
-
 hl.config({
 	dwindle = {
 		preserve_split = true,
@@ -171,9 +135,6 @@ hl.config({
 	},
 })
 
-----------------
-----  MISC  ----
-----------------
 hl.config({
 	misc = {
 		force_default_wallpaper = 0,
@@ -188,7 +149,7 @@ hl.config({
 ---------------
 hl.config({
 	input = {
-		kb_layout = "pl",
+		kb_layout = "us",
 		kb_variant = "",
 		kb_model = "",
 		kb_options = "",
@@ -198,7 +159,7 @@ hl.config({
 		follow_mouse = 1,
 
 		--force_no_accel = true,
-		sensitivity = 0,
+		sensitivity = 1,
 		accel_profile = "flat",
 
 		touchpad = {
@@ -208,17 +169,7 @@ hl.config({
 	},
 })
 
-hl.device({
-	name = "logitech-g305-1",
-	sensitivity = 0,
-	accel_profile = "flat",
-})
-
-hl.device({
-	name = "gxtp5100:00-27c6:01e0-touchpad",
-	sensitivity = 1,
-	accel_profile = "flat",
-})
+pcall(require, "input")
 
 hl.gesture({
 	fingers = 3,
@@ -231,6 +182,7 @@ hl.gesture({
 	direction = "horizontal",
 	action = "move",
 })
+pcall(require, "personal.input")
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -313,12 +265,6 @@ hl.bind(mainModAlt .. "+ ESCAPE", hl.dsp.exec_cmd("hyprshutdown --post-cmd 'logi
 hl.bind(mainMod .. " + B", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + V", hl.dsp.layout("togglesplit"))
 --hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-
--- Move focus with mainMod + arrow keys
---hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
---hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
---hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
---hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
 --windowMoving
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
