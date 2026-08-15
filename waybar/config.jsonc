@@ -4,6 +4,7 @@
   "modules-left": [
     "custom/archicon",
     "hyprland/workspaces",
+    "custom/keyboard",
     "battery#mouse",
     "battery#pen"
   ],
@@ -64,6 +65,11 @@
   "custom/archicon": {
     "format": " ",
     "on-click": "wlogout",
+    "tooltip": false
+  },
+  "custom/keyboard": {
+    "format": "  ",
+    "on-click": "pkill wvkbd-deskintl || wvkbd-deskintl",
     "tooltip": false
   },
 
